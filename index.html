@@ -9,8 +9,28 @@
 <body>
     <h1>JSON</h1>
     <h3>JavaScript Object Notation</h3>
+    <ul id="users-container">
 
+    </ul>
 
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(json => displayUser(json))
+        
+
+        function displayUser(users){
+            const user=users.map(user=>user.username);
+            const ul=document.getElementById('users-container');
+            for(let i=0; i<user.length;i++){
+                const userName=user[i];
+                const li=document.createElement('li');
+                li.innerText=userName;
+                ul.appendChild(li);
+            }
+        }
+
+    </script>
 
 </body>
 </html>
